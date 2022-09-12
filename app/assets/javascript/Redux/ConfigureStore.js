@@ -11,4 +11,6 @@ const store = configureStore({
     }
 }, applyMiddleware(thunk, logger));
 
+// store.dispatch()
+
 export default store;
