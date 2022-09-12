@@ -10,7 +10,7 @@ const setGreetings = (greetings) => ({
 const initialState = [];
 
 export const getGreetings = () => async (dispatch) => {
-    const { data } = await Axios.get('/greetings');
+    const { data } = await Axios.get('/api/v1/greetings/index');
     dispatch(setGreetings(data));
 }
 
