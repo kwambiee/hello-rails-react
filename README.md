@@ -54,7 +54,16 @@ $ git clone git@github.com:kwambiee/hello-rails-react.git
 
 ### Usage
 
-Kindly modify the files as needed.
+To run the application, in the terminal, go to the file directory and run this command.
+
+```
+$ cd hello-rails-react
+$ bundle install
+$ yarn install
+$ rails db:create
+$ rails db:migrate
+$ ./bin/dev
+```
 
 ### Run tests
 
