@@ -1,24 +1,28 @@
 import Axios from 'axios';
 
-const ADDGREETINGS = 'react-app/redux/ADDGREETINGS';
+const ADD_GREETINGS = 'ADD_GREETINGS';
 
-const addGreetings = (greetings) => ({
-    type: ADDGREETINGS,
-    greetings,
+const addGreets = greeting => ({
+    type: ADD_GREETINGS,
+    payload: greeting
 });
+
+export const fetchGreeting = () => async dispatch => {
+    try {
+        const greets = await Axios.get('/api/v1/greetings');
+        dispatch(addGreets(greets.data));
+    } catch (err) {
+        console.log(err);
+    }
+};
 
 
 const initialState = [];
 
-export const fetchGreetings = () => async (dispatch) => {
-    const response = await Axios.get('/api/v1/greetings');
-    dispatch(addGreetings(response.data));
-};
-
 const greetingReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADDGREETINGS:
-            return action.greetings;
+        case ADD_GREETINGS:
+            return [...state,...action.payload]
         default:
             return state;
     }

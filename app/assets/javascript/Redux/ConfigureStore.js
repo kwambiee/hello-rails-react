@@ -1,16 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import logger from "redux-logger";
+import thunk from 'redux-thunk';
 import greetingReducer from "./reducers/GreetingReducer";
-
+import { fetchGreeting } from "./reducers/GreetingReducer";
 
 const store = configureStore({
-    reducer: {
-        greetings: greetingReducer
-    }
-}, applyMiddleware(thunk, logger));
+    reducer: { greetingReducer },
+    middleware: [thunk],
+});
 
-// store.dispatch()
+store.dispatch(fetchGreeting());
 
 export default store;
+
